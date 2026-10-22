@@ -5,8 +5,9 @@ qualquer preferência de estilo sua.
 
 ## Fluxo obrigatório
 
-1. Escolha o modelo em `modelos/` (relatório de perspectiva ou nota de ativo) e mantenha a
-   ordem dos blocos.
+1. Escolha o modelo em `modelos/` (relatório de perspectiva ou nota de ativo), mantenha a
+   ordem dos blocos e declare o tema no cabeçalho (`tema: cripto | macro | defi | regulacao |
+   carteira | mercado`). Leia a linha do tema na seção 9 do guia.
 2. Escreva cada unidade (seção, parágrafo, bullet) com a **tese na primeira frase**.
 3. Use as fórmulas da seção 3 do guia literalmente, em especial a de revisão:
    "[Elevamos | Reduzimos] nossa projeção de [variável] em [N] pontos-base, para [Y]%".
@@ -24,3 +25,12 @@ qualquer preferência de estilo sua.
 - Defina cada tema e cada carteira de referência em nota de rodapé na primeira ocorrência.
 - Frases de 15 a 30 palavras e parágrafos de 3 a 5 frases.
 - Não copie frases de relatórios de terceiros. Adapte o método, nunca o texto.
+
+## Vícios que você tende a cometer (GUIA §11)
+
+- Travessão para aposto ou ênfase. Use vírgula, parênteses ou ponto.
+- Dois-pontos para "revelar" a conclusão. Escreva a conclusão como frase direta.
+- "Não é X, é Y", perguntas retóricas, "vale ressaltar", "no cenário atual", "jornada".
+- Listas de três adjetivos e "robusto", "crucial", "fundamental" em série.
+- Frases curtas em sequência. Ligue-as pela relação lógica (GUIA §10), de preferência
+  retomando o termo anterior ("Esse aumento..."), não com "Além disso" em toda frase.

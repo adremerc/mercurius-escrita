@@ -1,3 +1,7 @@
+---
+tema: cripto
+---
+
 <!-- EXEMPLO DE REFERÊNCIA. Números ilustrativos: mostram o padrão, não são projeções reais. -->
 
 # Perspectivas de longo prazo para criptoativos 2027
@@ -33,7 +37,7 @@ volatilidade.
 ### Em resumo
 
 - **Bitcoin:** Reduzimos nossa projeção de retorno em 150 pb, para 11,5% ao ano nos próximos 10
-  anos, porque a fase de adoção mais rápida ficou para trás e o preço já incorpora parte do
+  anos, porque a fase de adoção mais rápida ficou para trás. O preço já incorpora parte do
   acesso institucional.
 - **Volatilidade:** Esperamos volatilidade de 48% ao ano, a menor desde que começamos a publicar
   esta estimativa, sustentada pela base de detentores de longo prazo e pela liquidez dos ETFs.

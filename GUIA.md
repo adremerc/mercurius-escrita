@@ -78,7 +78,7 @@ São os moldes que dão o "som" do texto. Use-os literalmente, trocando só os c
 ### 3.1 Revisão de projeção (a frase mais importante do padrão)
 
 ```
-[Elevamos | Reduzimos] nossa projeção de [variável] em [N] pontos-base, para [Y]%[, – o maior nível desde [referência]].
+[Elevamos | Reduzimos] nossa projeção de [variável] em [N] pontos-base, para [Y]%[, o maior nível desde [referência]].
 [Mantemos] nossa projeção de [variável] em [Y]%, [motivo].
 ```
 
@@ -221,13 +221,109 @@ A seção de riscos:
 
 ---
 
-## 9. Checklist antes de publicar
+## 9. O guia por tema
 
+As regras gerais valem para tudo. Cada tema acrescenta exigências próprias, porque o leitor
+de uma nota de DeFi precisa de informações diferentes do leitor de uma nota de juros. Declare o
+tema no cabeçalho do arquivo e o revisor aplica as regras dele:
+
+```
+---
+tema: cripto
+---
+```
+
+| Tema | Uso | O que o tema exige a mais | Frase máx. | *Em resumo* |
+|---|---|---|---|---|
+| `cripto` | perspectiva de um criptoativo | volatilidade em %, correlação, data-base, ressalva de retorno passado; "bitcoin" (ativo) em minúscula e "Bitcoin" (rede) em maiúscula; "ouro digital" só entre aspas e atribuído | 35 | obrigatório |
+| `macro` | juros, inflação, PIB, câmbio | inflação com base (a/a, em 12 meses), juros com "a.a.", PIB real ou nominal, data-base; sem linguagem alarmista | 35 | obrigatório |
+| `defi` | DeFi, *staking*, on-chain | risco de contrato inteligente, APR ou APY definido, TVL em US$, rendimento em token ou em US$; proibido "sem risco" | 35 | obrigatório |
+| `regulacao` | normas e política pública | órgão e norma citados, prazo com data ou etapa; proibido "proibiu" ou "liberou" sem o ato | 40 | opcional |
+| `carteira` | carteira-modelo e alocação | carteira de referência definida, rebalanceamento, ressalva de que não é recomendação individual; proibido imperativo de venda ("compre") | 35 | obrigatório |
+| `mercado` | nota diária ou semanal | horário de corte dos dados, variação sempre com período ("em 24 horas", "na semana") | 30 | opcional |
+
+O tom também muda. A nota de `mercado` fica nos graus 1 e 2 da escala de convicção (fato e
+projeção) e quase não opina. Os textos de `cripto` e `carteira` usam os cinco graus. Em
+`regulacao`, a regra é descrever o ato antes de interpretá-lo.
+
+As regras de cada tema estão em [`ferramentas/temas.py`](ferramentas/temas.py). Para criar um
+tema novo, copie um bloco existente e ajuste.
+
+---
+
+## 10. Conectivos: como ligar frases e parágrafos
+
+O texto institucional soa humano porque cada frase retoma algo da anterior. Há duas formas de
+ligar ideias, e a primeira é melhor:
+
+1. **Retomada:** repita ou resuma o termo anterior com um demonstrativo. "A oferta de
+   stablecoins chegou a US$ 300 bilhões. **Esse crescimento** veio quase todo do USDT."
+2. **Conectivo:** use uma palavra de ligação quando a relação lógica precisar ficar explícita.
+
+Escolha o conectivo pela **função**, nunca pelo som:
+
+| Função | Use | Evite |
+|---|---|---|
+| Adição | além disso, também, da mesma forma | ademais, outrossim |
+| Contraste | no entanto, ainda assim, por outro lado, em contrapartida, mas | todavia (formal demais) |
+| Concessão | embora, apesar de, mesmo que | não obstante |
+| Causa | porque, já que, uma vez que, isso ocorre porque | haja vista |
+| Consequência | por isso, com isso, como resultado, assim | dessa forma (vício de IA quando repetido) |
+| Condição | caso, se, desde que | |
+| Exemplo | por exemplo, como mostra a Figura N | a título de exemplo |
+| Tempo | desde, ao longo de, nos próximos N anos | |
+
+Regras:
+
+- No máximo **um conectivo a cada três ou quatro frases**. Se toda frase abre com conectivo, o
+  texto fica mecânico.
+- O mesmo conectivo não abre mais de duas frases no documento.
+- O parágrafo novo retoma o anterior na primeira frase, com conectivo, demonstrativo ou o mesmo
+  termo.
+- Três frases curtas seguidas (menos de nove palavras) viram uma ou duas, ligadas por "porque",
+  "o que", "mas" ou "e".
+
+O revisor aponta transições abruptas e sugere o conectivo pela relação provável do trecho
+(contraste, causa, consequência, exemplo, tempo ou adição). A sugestão é um ponto de partida:
+quem escreve decide a relação certa.
+
+---
+
+## 11. Vícios de texto gerado por IA
+
+Estes padrões denunciam texto escrito ou revisado por IA sem edição humana. O revisor aponta
+todos.
+
+| Vício | Exemplo | Correção |
+|---|---|---|
+| Travessão para aposto ou ênfase | "a adoção institucional — impulsionada pelos ETFs — cresce" | vírgulas, parênteses ou duas frases. Limite: 1 a cada 150 palavras; o ideal é nenhum |
+| Dois-pontos de efeito | "O motivo é simples: liquidez." | "A liquidez explica o movimento." Dois-pontos só em títulos, rótulos e antes de listas ou fórmulas |
+| "Não é X, é Y" | "O bitcoin não é só especulação, é reserva de valor." | afirme Y e prove: "O bitcoin passou a ser usado como reserva de valor por 4,8% das empresas listadas." |
+| Pergunta retórica | "O resultado? Volatilidade menor." | "Como resultado, a volatilidade caiu para 48%." |
+| Clichês de abertura | "No cenário atual", "Vale ressaltar que", "É importante notar" | apague e comece pelo fato |
+| Metáforas gastas | jornada, navegar, mergulhar, divisor de águas, tapeçaria, panorama | verbo concreto |
+| Tríades em série | "mais maduro, mais institucional e mais fundamental" | um atributo, com número |
+| Adjetivos inflados repetidos | robusto, crucial, fundamental, significativo, essencial | número e comparação |
+| Aspas de ênfase | um "novo" bitcoin | sem aspas, ou aspas com atribuição de quem disse |
+| Fecho genérico | "Em suma", "Em conclusão" | a última frase é a tese, sem anúncio |
+| Frases picotadas | "Os ETFs cresceram. Os fluxos aumentaram. A liquidez melhorou." | "Os ETFs receberam US$ 38 bilhões, o que elevou a liquidez." |
+| Negrito em toda frase | **muitos** **destaques** | negrito só no título de conclusão e no rótulo do *Em resumo* |
+| Conectivos de enchimento | ademais, nesse sentido, nesse contexto, dessa forma | retomada do termo anterior |
+
+Veja o caso completo em [`exemplos/texto-ia.md`](exemplos/texto-ia.md) e rode o revisor nele.
+
+---
+
+## 12. Checklist antes de publicar
+
+- [ ] O cabeçalho declara o `tema:`.
 - [ ] O título de cada seção é uma tese em duas partes.
 - [ ] Toda seção tem *Em resumo* com 4 a 6 bullets em frase completa.
 - [ ] Toda revisão diz direção, tamanho em pontos-base e destino em %.
 - [ ] Todo número tem unidade, período e fonte; toda projeção tem horizonte e data-base.
 - [ ] Os temas estão definidos em nota de rodapé e reaparecem em riscos.
 - [ ] Toda "não recomendação" diz sob que condições mudaria.
-- [ ] Nenhuma palavra banida e nenhuma frase acima de 40 palavras.
+- [ ] Nenhuma palavra banida e nenhuma frase acima do limite do tema.
+- [ ] Nenhum travessão de ênfase, nenhum dois-pontos de efeito, nenhum "não é X, é Y".
+- [ ] Cada parágrafo retoma o anterior; nenhum conectivo abre mais de duas frases.
 - [ ] Rodei `python ferramentas/revisor.py arquivo.md` e zerei os erros.

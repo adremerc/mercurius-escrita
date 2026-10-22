@@ -16,7 +16,7 @@ sempre, revisão medida contra a edição anterior e certeza calibrada.
 
 ## Como usar
 
-1. Copie um modelo para `textos/` e escreva no lugar dos `[colchetes]`.
+1. Copie um modelo para `textos/`, declare o tema no cabeçalho (`tema: cripto`) e escreva no lugar dos `[colchetes]`.
 2. Rode o revisor e zere os erros:
    ```bash
    python ferramentas/revisor.py textos/meu-relatorio.md
@@ -26,24 +26,20 @@ sempre, revisão medida contra a edição anterior e certeza calibrada.
 
 ## O que o revisor verifica
 
-**Erros** (precisam ser corrigidos):
-- palavras banidas e linguagem informal;
-- exclamação e emoji;
-- primeira pessoa do singular;
-- decimal com ponto;
-- moeda sem `US$`;
-- `bps` no lugar de pontos-base;
-- revisão sem tamanho ou destino;
-- frases acima de 50 palavras;
-- documento com números e sem `Fonte:`.
+Quatro camadas, cada achado marcado com a sua:
 
-**Avisos** (pedem revisão humana):
-- frases acima de 40 palavras;
-- voz passiva em revisões;
-- absolutos ("sempre", "nunca");
-- intensificadores vagos;
-- projeção sem horizonte;
-- título de seção sem tese.
+| Camada | O que aponta |
+|---|---|
+| `[guia]` | palavras banidas, linguagem informal, "eu", decimal com ponto, moeda sem `US$`, `bps`, revisão sem tamanho ou destino, frases longas, projeção sem horizonte, falta de `Fonte:` |
+| `[ia]` | travessões (máx. 1 a cada 150 palavras), dois-pontos de efeito, "não é X, é Y", perguntas retóricas, clichês ("vale ressaltar", "no cenário atual", "jornada"), tríades, adjetivos inflados repetidos, aspas de ênfase, fechos genéricos |
+| `[conexão]` | parágrafo que não retoma o anterior (com sugestão de conectivo pela relação lógica), frases picotadas, frases seguidas com o mesmo início, conectivo repetido |
+| `[tema]` | exigências do tema declarado no cabeçalho (`cripto`, `macro`, `defi`, `regulacao`, `carteira`, `mercado`) |
+
+Para ver o efeito, compare [`exemplos/texto-ia.md`](exemplos/texto-ia.md), com 26 apontamentos,
+e a versão corrigida em [`exemplos/texto-ia-corrigido.md`](exemplos/texto-ia-corrigido.md), sem nenhum.
+
+As camadas `[ia]` e `[conexão]` são heurísticas: indicam onde olhar. Quem escreve decide a
+correção.
 
 ## Relação com os gráficos
 
