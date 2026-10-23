@@ -192,7 +192,7 @@ def revisar(caminho, tema_forcado=None):
             add("AVISO", "guia", n, "caixa alta para ênfase?", linha)
         if re.search(r"\b(bps|bp)\b", linha) or "pontos base" in baixa:
             add("ERRO", "guia", n, "use 'pontos-base' (1ª vez) e depois 'pb'", linha)
-        if re.search(r"\d+\.\d+\s?%", linha):
+        if re.search(r"\d+\.\d+\s?%", re.sub(r"\d{1,3}(\.\d{3})+", "", linha)):  # 1.158% é milhar
             add("ERRO", "guia", n, "decimal com ponto; use vírgula (7,5%)", linha)
         if re.search(r"(?<!US)\$\s?\d", linha):
             add("ERRO", "guia", n, "moeda sem prefixo; use 'US$'", linha)
