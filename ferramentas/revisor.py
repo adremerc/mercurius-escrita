@@ -35,6 +35,7 @@ BANIDOS = [
     "disparar", "imperdível", "oportunidade única", "revolucionário", "revolucionária",
     "incrível", "absurdo", "absurda", "garantido", "garantida", "certamente", "sem dúvida",
     "com certeza", "obviamente", "claramente", "game changer", "hype",
+    "simplesmente", "impressionante", "não deixe passar", "não perca", "corra para",
 ]
 INFORMAL = ["pra", "pro", "tá", "né", "tipo assim", "galera", "vai bombar"]
 VAGOS = ["muito", "bastante", "enorme", "gigante", "forte alta", "forte queda"]
@@ -198,7 +199,7 @@ def revisar(caminho, tema_forcado=None):
             add("ERRO", "guia", n, "moeda sem prefixo; use 'US$'", linha)
         if re.search(r"\b\d+(,\d+)?\s?(tri|bi|mi)\b", linha):
             add("AVISO", "guia", n, "escreva a unidade por extenso (trilhões, bilhões, milhões)", linha)
-        if re.search(r"\b(eu|meu|minha|acho)\b", baixa):
+        if re.search(r"\b(eu|meu|minha|acho|acredito|penso|considero|entendo|avalio|recomendo|creio|sugiro|vejo|achei|acreditei)\b", baixa):
             add("ERRO", "guia", n, "primeira pessoa do singular; use 'nós' institucional", linha)
         if re.search(r"\b(foi|foram) (revisad|elevad|reduzid|cortad)", baixa):
             add("AVISO", "guia", n, "voz passiva em revisão; prefira 'Elevamos/Reduzimos'", linha)
@@ -294,7 +295,7 @@ def revisar(caminho, tema_forcado=None):
                 add("ERRO", "guia", n, f"frase com {np_} palavras (máx. {limite})", f)
             elif np_ > limite:
                 add("AVISO", "guia", n, f"frase com {np_} palavras (máx. {limite})", f)
-            if re.search(VERBOS_REVISAO, f):
+            if re.search(VERBOS_REVISAO, f) and "[DADO" not in f:  # [DADO] marca dado pendente
                 tem_pb = re.search(r"pontos-base|\bpb\b", f)
                 if not tem_pb and "%" in f:
                     add("ERRO", "guia", n, "revisão sem tamanho em pontos-base", f)

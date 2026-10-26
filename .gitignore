@@ -1,1 +1,3 @@
 __pycache__/
+ollama/Modelfile
+ollama/finetune/
